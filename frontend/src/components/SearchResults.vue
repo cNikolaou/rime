@@ -10,7 +10,7 @@ Copyright 2023 Telemarq Ltd
       <div v-for="device in activeDevices" class="header">
         <span class="deviceName">{{ device }}</span>
       </div>
-      <div v-if="searchResult">
+      <template v-if="searchResult">
         <div v-for="eventRow in eventsRowGenerator()" class="row">
           <template v-for="event in eventRow">
             <div v-if="event !== null" class="event" :class="event.__typename">
@@ -22,7 +22,7 @@ Copyright 2023 Telemarq Ltd
             <div v-else class="event"></div>
           </template>
         </div>
-      </div>
+      </template>
     </div>
     <div v-if="activeDevices.length === 0" class="center text-box">
       Select one or more devices at the top left to begin.
