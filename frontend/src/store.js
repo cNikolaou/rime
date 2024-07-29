@@ -64,7 +64,10 @@ const devicesSubscription = gql`
       is_locked
       is_encrypted
       country_code
-      device_info { key value }
+      device_info {
+        key
+        value
+      }
     }
   }
 `;
