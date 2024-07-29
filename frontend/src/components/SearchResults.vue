@@ -5,6 +5,7 @@ Copyright 2023 Telemarq Ltd
 -->
 <template>
   <div>
+    <TimelineView v-if="state.displayTimeline" />
     <button id="refresh" @click="eventsRefetch()">&#128472;</button>
     <div class="searchResultsTable">
       <div v-for="device in activeDevices" class="header">
@@ -91,9 +92,13 @@ import {
 } from '../store.js';
 import { useQuery } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
+import TimelineView from './TimelineView.vue';
 
 import SearchResultMessageEvent from './SearchResultMessageEvent.vue';
 import SearchResultMediaEvent from './SearchResultMediaEvent.vue';
+
+import { useStateStore } from '../state';
+const state = useStateStore();
 
 class ChatSession {
   constructor(sessionId, name, participants, providerFriendlyName) {

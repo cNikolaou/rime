@@ -1,12 +1,21 @@
-<!-- 
+<!--
 This software is released under the terms of the GNU GENERAL PUBLIC LICENSE.
 See LICENSE.txt for full details.
 Copyright 2023 Telemarq Ltd
 -->
 <script setup>
+import { computed } from 'vue';
 import { searchView, setSearchView } from '../store.js';
 
+import { useStateStore } from '../state.js';
+
 const props = defineProps({});
+
+const state = useStateStore();
+
+const timelineMessage = computed(() => {
+  return state.displayTimeline ? 'Hide Timeline' : 'Show Timeline';
+});
 </script>
 
 <template>
@@ -22,6 +31,9 @@ const props = defineProps({});
       @click="setSearchView('media')"
     >
       Media
+    </li>
+    <li @click="state.toggleTimeline">
+      {{ timelineMessage }}
     </li>
   </ul>
 </template>

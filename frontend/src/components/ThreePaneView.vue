@@ -109,7 +109,7 @@ function showPopover(message) {
   padding-right: 1em;
   color: white;
   font-weight: 700;
-  z-index: 100;
+  z-index: 10;
   text-align: center;
   display: none;
 }
